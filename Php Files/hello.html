@@ -1,0 +1,12 @@
+<button id="myButton">Click to hide the div</button>
+
+<div id="myDiv">This is the div to be hidden</div>
+
+<script>
+    var button = document.getElementById("myButton");
+    var div = document.getElementById("myDiv");
+
+    button.addEventListener("click", function() {
+        div.style.display = "none";
+    });
+</script>

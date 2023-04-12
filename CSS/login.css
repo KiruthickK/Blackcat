@@ -1,0 +1,29 @@
+#maindiv {
+    position: relative;
+    background-color: aqua;
+}
+
+body {
+    background-color: aqua;
+}
+
+#login,
+#signup {
+    position: relative;
+}
+
+#login {
+    display: block;
+}
+
+#signup {
+    display: none;
+}
+
+#BtnLogIn {
+    display: block;
+}
+
+#BtnSgnUp {
+    display: none;
+}
