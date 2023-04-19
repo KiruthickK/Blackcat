@@ -9,9 +9,12 @@
 </head>
 
 <body>
-    <form action="" method="post">
+    <form action="Php Files/postcat.php" method="post" enctype="multipart/form-data">
         post cat
-        <input type="text" name="catname" placeholder="Enter your cat name">
+        <input type="text" name="username" placeholder="Enter username">
+        <input type="text" name="catname" placeholder="Enter your cat name"> Select image to upload:
+        <input type="file" name="fileToUpload" id="fileToUpload">
+        <input type="submit" value="Upload Image" name="submit">
     </form>
 </body>
 
