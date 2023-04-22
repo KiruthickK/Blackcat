@@ -1,0 +1,49 @@
+nav {
+    background-color: #333;
+    height: 50px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 50px;
+}
+
+nav li {
+    float: right;
+    color: white;
+}
+
+.welcome {
+    float: none;
+    color: aliceblue;
+    margin: 13px;
+}
+
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 15px 20px;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: #111;
+}
+
+.custom-button {
+    border: none;
+    background-color: #4caf4f00;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.custom-button:focus {
+    outline: none;
+}
