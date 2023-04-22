@@ -20,7 +20,7 @@
             <form action="login.php" method="post">
                 <input type="email" name="email" placeholder="Email"><br><br>
                 <input type="password" name="password" placeholder="Password"><br><br>
-                <button name="login">Login</button>
+                <button name="login" class="button">Login</button>
             </form>
         </div><br>
         <div id="signup">
@@ -31,7 +31,7 @@
                 <input type="email" name="email" placeholder="email"><br><br>
                 <input type="password" name="signuppassword" placeholder="Password"><br><br>
                 <input type="password" name="signuprepassword" placeholder="Re-enter password"><br><br>
-                <button name="signup">Signup</button>
+                <button name="signup" class="button">Signup</button>
             </form>
         </div>
     </div>
@@ -39,17 +39,20 @@
 
 <?php
 @include 'DBConnection.php';
+@include 'CommonMethods.php';
 if (isset($_POST['login'])) {
     $Email = $_POST["email"];
     $password = $_POST["password"];
     if ($conn) {
-        $SqlQuery = "SELECT password from USERS WHERE email = '$Email'";
+        $SqlQuery = "SELECT * from USERS WHERE email = '$Email'";
         $result = mysqli_query($conn, $SqlQuery);
         if (mysqli_num_rows($result)) {
             $row = mysqli_fetch_assoc($result);
             if ($password == $row["password"]) {
                 mysqli_close($conn);
-                RedirectPage("../HomePage.html");
+                session_start();
+                $_SESSION["blackcatusername"] = $row["name"];
+                RedirectPage("./HomePage.php");
             } else {
                 AlertError("Password not matching");
             }
