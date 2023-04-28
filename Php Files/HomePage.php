@@ -19,8 +19,8 @@
         <nav>
             <ul>
                 <li><a href="#"><button name="logout" class="custom-button">Logout</button></a></li>
-                <li><a href="#">Post</a></li>
-                <li><a href="#">Check Posts</a></li>
+                <li><a href="#postcat">Post</a></li>
+                <li><a href="#displaycats">Check Posts</a></li>
                 <li class="welcome">
                     <?php
                     session_start();
@@ -57,8 +57,8 @@
                         <option value="2">above 1</option>
                     </optgroup>
                     <option value="yourcats">your cats</option>
-                </select>
-                <button name="filterssearch">Apply filter</button>
+                </select><br><br>
+                <input type="button" name="filterssearch" value="Apply filter">
                 <?php
                 if (isset($_POST["filterssearch"])) {
                     $filter = $_POST["filter"];
