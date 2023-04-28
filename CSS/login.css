@@ -1,77 +1,22 @@
-#maindiv {
-    position: relative;
-    /* background-color: aqua; */
-}
-
-
-/* body {
-    background-color: aqua;
-} */
-
-body {
-    background-color: #333;
-    animation: color-change 10s infinite alternate;
-}
-
-@keyframes color-change {
-    0% {
-        background-color: #333;
-    }
-    50% {
-        background-color: #ff6699;
-    }
-    100% {
-        background-color: #333;
-    }
-}
-
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+html {
     height: 100%;
-    z-index: -1;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
 }
-
-body:hover .overlay {
-    opacity: 1;
-}
-
-
-/* Add a subtle box-shadow effect to the body */
 
 body {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: linear-gradient(#141e30, #243b55);
 }
 
-
-/* Add a border-radius effect to the overlay */
-
-.overlay {
-    border-radius: 50% 0 0 50%;
-}
-
-#login,
-#signup {
-    position: relative;
-}
-
-#login {
-    display: block;
-}
-
-#signup {
-    display: none;
-}
-
-#BtnLogIn {
-    display: block;
+ul li {
+    list-style: none;
 }
 
 #BtnSgnUp {
+    display: none;
+}
+
+#signup {
     display: none;
 }

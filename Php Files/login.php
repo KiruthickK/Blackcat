@@ -12,9 +12,17 @@
 </head>
 
 <body>
+    <div>
+        <nav>
+            <ul>
+                <li><button id="BtnLogIn" onclick="MakeSignUpVisible()">Sign Up?</button> <button id="BtnSgnUp" onclick="MakeLoginVisible()">Log in?</button></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About us</a></li>
+            </ul>
+        </nav>
+    </div>
     <div id="maindiv" class="centerDiv">
-        <button id="BtnLogIn" onclick="MakeSignUpVisible()">Sign Up?</button>
-        <button id="BtnSgnUp" onclick="MakeLoginVisible()">Log in?</button>
+
         <br><br>
         <div id="login">
             <form action="login.php" method="post">
@@ -33,8 +41,11 @@
                 <input type="password" name="signuprepassword" placeholder="Re-enter password"><br><br>
                 <button name="signup" class="button">Signup</button>
             </form>
+
         </div>
     </div>
+    
+       
 </body>
 
 <?php
@@ -78,11 +89,18 @@ if (isset($_POST["signup"])) {
     } else {
         if($conn)
         {
-            $sql = "INSERT INTO USERS values('$name',$age,'$phonenumber',$password','$email')";
+            $sql = "INSERT INTO users VALUES('$name','$age','$phonenumber','$signuppassword','$email')";
             if(mysqli_query($conn,$sql))
             {
+                session_start();
+                $_SESSION["blackcatusername"] = $row["name"];
                 AlertMessage("Account created successfully!");
-                RedirectPage("../HomePage.html");
+                RedirectPage("HomePage.php");
+            }
+            else
+            {
+                AlertError("Sorry account not created!");
+                RedirectPage("login.php");
             }
             mysqli_close($conn);
         }

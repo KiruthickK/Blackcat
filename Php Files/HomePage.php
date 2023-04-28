@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../CSS/Homepage.css">
 </head>
 
-<body onload="CheckUser()">
+<body>
     <form action="HomePage.php" method="post">
         <nav>
             <ul>
@@ -34,12 +34,36 @@
     </form>
 
     <br><br>
-    <form action="Php Files/postcat.php" method="post" enctype="multipart/form-data">
-        post cat
-        <input type="text" name="username" placeholder="Enter username">
-        <input type="text" name="catname" placeholder="Enter your cat name"> Select image to upload:
-        <input type="file" name="fileToUpload" id="fileToUpload">
-        <input type="submit" value="Upload Image" name="submit">
+    <form action="postcat.php" method="post" enctype="multipart/form-data">
+    <h2>post cat</h2>    
+    
+        <table>
+            <tr>
+                <th>Cat's Name</th>
+                <th><input type="text" name="catname" placeholder="Enter your cat's name" required> </th>
+            </tr>
+            <tr>
+                <th>Cat's Age</th>
+                <th><input type="number" name="catage" placeholder="Enter your cat's age" required></th>
+            </tr>
+            <tr>
+                <th>Cat's Color</th>
+                <th><input type="text" name="catcolor" placeholder="Enter your cat's color" required></th>
+            </tr>
+            <tr>
+                <th>Cat's Behaviour</th>
+                <th><input type="text" name="catbehaviour" placeholder="Enter your cat's behaviour" required></th>
+            </tr>
+            <tr>
+                <th>Select image to upload:</th>
+                <th><input type="file" name="fileToUpload" id="fileToUpload" required></th>
+            </tr>
+            
+        </table>
+        
+        
+        <br>
+        <input type="submit" value="Upload Image" name="submit" id="submitbtn" ><br>
     </form>
     <!-- <input type="button" name="logout" id="logout" placeholder="logout?"> -->
 </body>
@@ -57,4 +81,4 @@
         session_destroy();
         RedirectPage("./login.php");
     }
-    ?>
+?>
