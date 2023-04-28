@@ -1,3 +1,36 @@
+#maindiv {
+    margin-left: 20%;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+body {
+    background: #e1b3b3;
+    font-family: 'Quicksand', sans-serif;
+}
+
+table,
+tr,
+th,
+td {
+    border: 1px solid rgb(87, 5, 5);
+}
+
+.oddd {
+    border: 1px solid black;
+    margin-right: 20%;
+    background: #dd7777;
+}
+
+.evenn {
+    background: #c37a7a;
+    border: 1px solid black;
+    margin-right: 20%;
+}
+
+.allform {
+    margin: 10%;
+}
+
 nav {
     background-color: #333;
     height: 50px;
