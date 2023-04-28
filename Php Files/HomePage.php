@@ -23,9 +23,19 @@
                 <li><a href="#displaycats">Check Posts</a></li>
                 <li class="welcome">
                     <?php
+                    date_default_timezone_set('Asia/Kolkata'); // Set your timezone
+                    $current_time = date('H:i:s'); // Get the current time in hours, minutes and seconds
+                    $msg = "";
+                    if ($current_time >= '05:00:00' && $current_time < '12:00:00') {
+                        $msg = "Good morning!";
+                    } elseif ($current_time >= '12:00:00' && $current_time < '18:00:00') {
+                        $msg = "Good afternoon!";
+                    } else {
+                        $msg = "Good evening!";
+                    }
                     session_start();
                     if (isset($_SESSION["blackcatusername"])) {
-                        echo ("Welcome " . $_SESSION["blackcatusername"] . "!");
+                        echo ("Welcome " . $_SESSION["blackcatusername"] . "!, ".$msg);
                     } else {
                         AlertError("You have to login first!");
                         RedirectPage("./login.php");
