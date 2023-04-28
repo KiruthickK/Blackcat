@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home page</title>
     <link rel="stylesheet" href="../CSS/Homepage.css">
+    <script src="../JavaScripts/Homepage.js"></script>
 </head>
 
 <body>
@@ -32,11 +33,46 @@
 
         </nav>
     </form>
+<br><br>
+<form action="HomePage.php"  method="post" enctype="multipart/form-data" id="displaycats">
+    <h2>Cat posts</h2>
 
+<?php
+@include 'DBConnection.php';
+if ($conn) {
+    $sql = "SELECT * FROM cats";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result)) {
+        echo("
+        <table>
+            <tr>
+                <th>Cat Name</th>
+                <th>Cat Photo</th>
+                <th>Age</th>
+                <th>Behaviour</th>
+                <th>color</th>
+            </tr>
+        ");
+        while($row = mysqli_fetch_assoc($result))
+        {
+            echo "<tr><td>".$row["name"]."</td><td><img src=\"..\Images\Usercats\\".$row["owner"]."\\".$row["name"].".".$row["imagetype"]."\" class =\"images-cat\"alt=\"".$row["name"]." \"></td>";
+            echo "<td>".$row["age"]."</td><td>".$row["behaviour"]."</td><td>".$row["color"]."</td></tr>";
+        }
+        echo "</table>";
+    } else {
+        echo"<h2>No cat photos have been posted. Be the first one to post your cat's photo</h2>";
+    }
+} else {
+    AlertError("Database error");
+    RedirectPage("HomePage.php");
+}
+
+?>
+</form>
     <br><br>
-    <form action="postcat.php" method="post" enctype="multipart/form-data">
+    <form action="postcat.php" method="post" enctype="multipart/form-data" id="postcat">
     <h2>post cat</h2>    
-    
+
         <table>
             <tr>
                 <th>Cat's Name</th>

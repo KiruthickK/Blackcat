@@ -9,6 +9,10 @@ if (isset($_SESSION["blackcatusername"])) {
 $age = $_POST["catage"];
 $catname = $_POST["catname"];
 $target_dir = "../Images/Usercats/" . $username;
+if (!file_exists($target_dir)) {
+  mkdir($target_dir,0777, true);
+  AlertMessage("Directory created for user!");
+}
 $catbehaviour = $_POST["catbehaviour"];
 $catcolor = $_POST["catcolor"];
 // echo ("<script>alert(\"Hello".$target_dir."hi\");</script>");
@@ -18,10 +22,7 @@ $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 $new_name = $target_dir. "/" . $catname . "." . $imageFileType;
-if (!file_exists($target_dir)) {
-    mkdir($target_dir,0777, true);
-    AlertMessage("Directory created for user!");
-}
+
 if(file_exists($new_name))
 {
   AlertMessage("This cat already has its photo uploaded here!");
@@ -29,7 +30,7 @@ if(file_exists($new_name))
 }
 // Check if image file is a actual image or fake image
 if (isset($_POST["submit"])) {
-  if($catname == null || $username == null)
+  if($catname == null || $username == null )
   {
     AlertError("Inputs have to be filled !");
     RedirectPage("HomePage.php");
@@ -52,11 +53,7 @@ if (file_exists($target_file)) {
   $uploadOk = 0;
 }
 
-// Check file size
-if ($_FILES["fileToUpload"]["size"] > 500000) {
-  echo "Sorry, your file is too large.";
-  $uploadOk = 0;
-}
+
 
 // Allow certain file formats
 if (
@@ -74,7 +71,7 @@ if ($uploadOk == 0) {
 } else {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $new_name)) {
     if ($conn) {
-      $SqlQuery = "INSERT INTO CATS VALUES('$catname',$age,'$catcolor','$catbehaviour','$username')";
+      $SqlQuery = "INSERT INTO CATS VALUES('$catname',$age,'$catcolor','$catbehaviour','$username','$imageFileType')";
       if (mysqli_query($conn, $SqlQuery)) {
         echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
         AlertMessage("Cat photo uploaded successfully!");

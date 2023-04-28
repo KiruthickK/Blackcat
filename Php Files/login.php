@@ -63,7 +63,7 @@ if (isset($_POST['login'])) {
                 mysqli_close($conn);
                 session_start();
                 $_SESSION["blackcatusername"] = $row["name"];
-                RedirectPage("./HomePage.php");
+                RedirectPage("HomePage.php");
             } else {
                 AlertError("Password not matching");
             }
@@ -93,7 +93,7 @@ if (isset($_POST["signup"])) {
             if(mysqli_query($conn,$sql))
             {
                 session_start();
-                $_SESSION["blackcatusername"] = $row["name"];
+                $_SESSION["blackcatusername"] = $name;
                 AlertMessage("Account created successfully!");
                 RedirectPage("HomePage.php");
             }

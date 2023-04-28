@@ -73,3 +73,13 @@ label {
     display: block;
     margin: 20px 0 10px;
 }
+
+.images-cat {
+    width: 200px;
+    height: 150px;
+}
+
+
+/* #postcat {
+    display: none;
+} */
